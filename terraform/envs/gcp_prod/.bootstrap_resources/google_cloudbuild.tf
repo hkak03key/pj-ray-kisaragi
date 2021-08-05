@@ -8,7 +8,8 @@ module "google_cloudbuild_tf_plan_for_pr" {
     owner = "hkak03key"
     name  = "pj-ray-kisaragi"
     pull_request = {
-      branch = ".*"
+      branch          = ".*"
+      comment_control = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
     }
   }
   proc = "plan"
