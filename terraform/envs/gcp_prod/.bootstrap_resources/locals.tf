@@ -1,4 +1,4 @@
 locals {
-  project_id   = data.google_project.project.number
+  project_id = data.google_project.project.number
 }
 
