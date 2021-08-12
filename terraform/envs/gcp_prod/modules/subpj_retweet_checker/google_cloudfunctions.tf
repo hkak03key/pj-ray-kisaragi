@@ -41,7 +41,7 @@ resource "google_cloudfunctions_function" "this" {
   description = local.module_name
   runtime     = "python39"
 
-  available_memory_mb   = 128
+  available_memory_mb   = 256
   service_account_email = google_service_account.this.email
   source_archive_bucket = google_storage_bucket_object.gcf_codes["scripts"].bucket
   source_archive_object = google_storage_bucket_object.gcf_codes["scripts"].name
