@@ -29,7 +29,7 @@ def proc(twitter_pagination_token=None):
     gsht.edit_spreadsheet(tweets, is_new, is_final)
 
     print("twitter_next_token:", twitter_next_token)
-    if is_final:
+    if not is_final:
         gcp.create_pagenate_task(
             PAGINATE_QUEUE_PATH,
             (datetime.now(timezone.utc) + timedelta(minutes=16)).isoformat(),
