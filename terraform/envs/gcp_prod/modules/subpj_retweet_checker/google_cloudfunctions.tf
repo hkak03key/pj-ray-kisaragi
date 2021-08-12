@@ -23,7 +23,7 @@ resource "google_storage_bucket_object" "gcf_codes" {
     for v in keys(data.archive_file.gcf_codes)
     : v => data.archive_file.gcf_codes[v]
   }
-  name   = "${local.module_name}/gcf/${each.key}.zip"
+  name   = "${local.module_name}/gcf/${each.key}/${each.value.output_md5}.zip" # md5 for update code
   bucket = var.tf_bucket
   source = each.value.output_path
 }
@@ -51,7 +51,6 @@ resource "google_cloudfunctions_function" "this" {
   environment_variables = {
     PAGINATE_QUEUE_PATH = google_cloud_tasks_queue.paginate.id
     TWITTER_SECRET_ID   = google_secret_manager_secret.twitter_api.secret_id
-    source_archive_md5  = google_storage_bucket_object.gcf_codes["scripts"].md5hash # for update code
   }
 }
 
