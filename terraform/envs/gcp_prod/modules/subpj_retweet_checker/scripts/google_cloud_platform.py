@@ -4,7 +4,7 @@ import re
 import requests
 
 import google.auth
-from google.cloud import secretmanager_v1beta1 as secretmanager
+from google.cloud import secretmanager_v1 as secretmanager
 from google.cloud import tasks_v2 as tasks
 from google.protobuf import timestamp_pb2
 
