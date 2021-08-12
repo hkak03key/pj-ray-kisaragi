@@ -51,6 +51,7 @@ resource "google_cloudfunctions_function" "this" {
   environment_variables = {
     PAGINATE_QUEUE_PATH = google_cloud_tasks_queue.paginate.id
     TWITTER_SECRET_ID   = google_secret_manager_secret.twitter_api.secret_id
+    source_archive_md5  = google_storage_bucket_object.gcf_codes["scripts"].md5hash # for update code
   }
 }
 
