@@ -1,5 +1,6 @@
 resource "google_storage_bucket" "terraform" {
-  name = "${var.project_name}-terraform"
+  name     = "${var.project_name}-terraform"
+  location = upper(local.region)
 
   versioning {
     enabled = true
@@ -13,7 +14,6 @@ resource "google_storage_bucket" "terraform" {
       type = "Delete"
     }
   }
-
 
   lifecycle {
     prevent_destroy = true
